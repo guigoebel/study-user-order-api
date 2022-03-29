@@ -1,0 +1,48 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "git.autofetch": true,
+        "git.autofetchPeriod": 180,
+        "files.eol": "\n",
+        "files.encoding": "utf8",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.trimAutoWhitespace": true,
+        "editor.tabSize": 4,
+        "go.inferGopath": false,
+        "[go]": {
+            "editor.formatOnSaveMode": "file"
+        },
+        "terminal.integrated.env.linux": {
+            "PATH": "...:/usr/bin:/bin:cmd/golangci-lint:..."
+        },
+        "terminal.integrated.env.windows": {
+            "PATH": "...:/usr/bin:/bin:cmd/golangci-lint:..."
+        },
+        "go.formatTool": "gofumpt",
+        "go.buildOnSave": "workspace",
+        "go.lintOnSave": "workspace",
+        "go.lintTool": "golangci-lint",
+        "go.lintFlags": [
+            "--config=${workspaceFolder}/.golangci.yml",
+            "--fix",
+            "--deadline=30s",
+            "src"
+        ],
+        "go.alternateTools": {},
+        "go.toolsManagement.autoUpdate": true,
+        "go.useLanguageServer": true,
+        "gopls": {
+            "formatting.gofumpt": true
+        },
+        "go.liveErrors": {
+            "enabled": true,
+            "delay": 500
+        }
+    }
+}
