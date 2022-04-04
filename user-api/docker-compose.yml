@@ -3,17 +3,16 @@ services:
   app:
     container_name: user-api
     build: .
-    ports: 
-      - 8080:8080 
+    ports:
+      - 8080:8080
     restart: on-failure
     volumes:
       - api:/usr/src/app/
     depends_on:
       # - user-api-postgres          # Uncomment this when using postgres.
-      - user-api-mysql           # Uncomment this when using mysql.
+      - user-api-mysql # Uncomment this when using mysql.
     networks:
       - user-api
-
 
   # user-api-postgres:
   #   image: postgres:latest
@@ -29,7 +28,7 @@ services:
   #     - database_postgres:/var/lib/postgresql/data
   #   networks:
   #     - user-api
-    
+
   # pgadmin:
   #   image: dpage/pgadmin4
   #   container_name: pgadmin_container
@@ -44,14 +43,14 @@ services:
   #     - user-api
   #   restart: unless-stopped
 
-  
+
   user-api-mysql:
     image: mysql:5.7
     container_name: full_db_mysql
-    ports: 
+    ports:
       - 3306:3306
-    environment: 
-      - MYSQL_ROOT_HOST=${DB_HOST} 
+    environment:
+      - MYSQL_ROOT_HOST=${DB_HOST}
       - MYSQL_USER=${DB_USER}
       - MYSQL_PASSWORD=${DB_PASSWORD}
       - MYSQL_DATABASE=${DB_NAME}
@@ -60,7 +59,7 @@ services:
       - database_mysql:/var/lib/mysql
     networks:
       - user-api
-  
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin_container
@@ -77,13 +76,12 @@ services:
     networks:
       - user-api
 
-
 volumes:
-  api:
-  # database_postgres:                  # Uncomment this when using postgres.
-  database_mysql:                   # Uncomment this when using mysql.
+  api: # database_postgres:                  # Uncomment this when using postgres.
+  database_mysql:
+    # Uncomment this when using mysql.
 
-# Networks to be created to facilitate communication between containers
+    # Networks to be created to facilitate communication between containers
 networks:
   user-api:
     driver: bridge
